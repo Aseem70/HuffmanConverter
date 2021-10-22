@@ -30,15 +30,14 @@ std::map<char, freq> HuffmanTree::mapFrequencies(std::string input)  //freq == i
 }
 
 
-//Do i pass huffman node as a pointer or a non pointer??
 HeapQueue <HuffmanNode*, HuffmanNode::Compare>  HuffmanTree::priorityFrequency(std::map<char, freq> freqMap)
 {   
-    //I am... comparing ?
+    
     HeapQueue <HuffmanNode*, HuffmanNode::Compare> priorityQueue;
 
     std::map<char, freq>::iterator it = freqMap.begin();
 
-    //convert from map to priority queue
+    
     while(it != freqMap.end())
     {
         HuffmanNode* insertNode = new HuffmanNode(it->first, it->second);
@@ -71,11 +70,7 @@ HuffmanNode* HuffmanTree::constructTree(HeapQueue<HuffmanNode*, HuffmanNode::Com
         priorityQueue.insert(newNode);
     }
 
-    /*
-    HuffmanTree* completedTree = new HuffmanTree(priorityQueue.min());
-
-    return completedTree;
-    */
+    
 
     //return new root node
     return priorityQueue.min();
@@ -169,15 +164,7 @@ HuffmanNode* HuffmanTree::deserializeTree(std::string serialized)
         }
     } //end for loop
 
-    // while(stack.size() > 1)
-    // {
-    //     rightChild = stack.top();
-    //     stack.pop();
-    //     leftChild = stack.top();
-    //     stack.pop();
-    //     newNode = new HuffmanNode('\0', 0, nullptr, leftChild, rightChild);
-    //     stack.push(newNode); 
-    // }
+   
 
     return stack.top();
 }
@@ -187,7 +174,7 @@ std::string HuffmanTree::convertCompressed(std::string compressed, HuffmanNode* 
     HuffmanNode* traversalNode = root;
     std::string translatedString;
 
-    // std::cout << compressed << std::endl;
+    
 
     for(char x: compressed)
     {
@@ -243,46 +230,3 @@ std::string HuffmanTree::decompress(const std::string inputCode, const std::stri
 
 }
 
-// int main()
-// {
-
-//     HuffmanTree t;
-//     std::string testInput = "waFAWEFW fv awfmnawe FAWME FGWTGFWAINF WIREF 3252q34we RFWD C de.,/";
-
-    // std::cout << t.compress(testInput) << std::endl;
-
-    // std::string compressedText = t.compress(constitution);
-
-    // std::cout << compressedText << "\n" << t.serializeTree() << std::endl;
-    
-    // std::cout << compressedText << "\n" << t.serializeTree() << std::endl;
-
-
-    //std::cout << (t.serializeTree() == "L LdLgBLhLmBBLpLxBLfBBLiBBLeLsLbBLaBBLcLoBLlBLnLtBBBB" )<< std::endl;
-
-    // std::cout << ( t.decompress(compressedText, t.serializeTree()) == constitution );
-
-
-// //     std::map<char, int> frequencyMap = t.mapFrequencies(testInput);
-// //     HeapQueue<HuffmanNode*, HuffmanNode::Compare> test = t.priorityFrequency(frequencyMap);
-// //     t.setRootNode(t.constructTree(test));
-// //     std::map<char, code> huffMap;
-// //    t.createCharCode(t.getRootNode(), huffMap, "");
-
-//     // while(!test.empty())
-//     // {
-//     //     std::cout << test.min()->getCharacter() << " " << test.min()->getFrequency() << std::endl;
-//     //     test.removeMin();
-//     // }
-    
-// //    for(std::map<char, code>::const_iterator it = huffMap.begin(); 
-// //    it != huffMap.end(); ++it)
-// //    {
-// //        std::cout << it->first << " " << it->second << std::endl;
-// //    }
-
-//     // std::cout << t.convertString(testInput, huffMap) << std::endl;
-
-//     return 1;
-
-// }
